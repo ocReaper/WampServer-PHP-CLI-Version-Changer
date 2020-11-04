@@ -9,9 +9,7 @@ rem |            User Defined Variable(s)            |
 rem +------------------------------------------------+
 
 rem WampServer custom install path.
-set $customInstallPath=
-
-
+set "$customInstallPath=%WAMP_SERVER_INSTALL_PATH%"
 
 rem +------------------------------------------------+
 rem |           DO NOT EDIT BELOW THIS LINE          |
@@ -43,7 +41,7 @@ rem   Install Paths
 rem -----------------
 
 rem Test for a custom install path.
-if defined $customInstallPath (
+if defined $customInstallPath if $customInstallPath neq "" (
 
     rem Check if the folder exists.
     if not exist "%$customInstallPath%" goto invalidCustomInstallPathGiven
@@ -166,7 +164,7 @@ if "%~1" neq "" (
     for /L %%a in (1,1,%$lastAvailablePhpVersionsArrayId%) do (
 
         rem If a matching installed PHP folder name is found, set the new selection id.
-        if "%1"=="!$availablePhpVersionsArray[%%a]!" (
+        if "php%~1"=="!$availablePhpVersionsArray[%%a]!" (
             set $newSelectionId=%%a
         )
     )
@@ -284,7 +282,7 @@ if %$cliMode% equ 0 (
     pause >nul
 )
 
-exit 0
+exit /b 0
 
 rem A current selection was given.
 :currentSelectionGiven
@@ -297,7 +295,7 @@ if %$cliMode% equ 0 (
     pause >nul
 )
 
-exit 0
+exit /b 0
 
 
 rem ------------------------------
@@ -315,7 +313,7 @@ if %$cliMode% equ 0 (
     pause >nul
 )
 
-exit 1
+exit /b 2
 
 rem ----------------------------
 rem   Exit Subroutines - Error
@@ -333,7 +331,7 @@ if %$cliMode% equ 0 (
     pause >nul
 )
 
-exit 1
+exit /b 1
 
 rem Both of the default install paths are missing.
 :defaultInstallPathsMissing
@@ -351,7 +349,7 @@ if %$cliMode% equ 0 (
     pause >nul
 )
 
-exit 1
+exit /b 1
 
 rem An invalid $pathToPhpFolders was given.
 :invalidPathToPhpFoldersGiven
@@ -367,4 +365,4 @@ if %$cliMode% equ 0 (
     pause >nul
 )
 
-exit 1
+exit /b 1
