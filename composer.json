@@ -1,0 +1,18 @@
+{
+    "name": "ocreaper/wamp-server-php-cli-version-changer",
+    "description": "WampServer PHP CLI Version Changer is a Microsoft Windows batch script that allows you to easily change between installed WampServer PHP CLI versions using the users environment 'path' variable.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ocReaper",
+            "email": "ocreaper@gmail.com"
+        }
+    ],
+    "require": {},
+    "bin": [
+        "pvm.cmd",
+        "cli_changer.cmd",
+        "RefreshEnv.cmd"
+    ]
+}
